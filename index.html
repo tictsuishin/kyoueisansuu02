@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>算数の振り返りアプリ</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="header">
+        <h1>算数の振り返り</h1>
+      </header>
+
+      <div class="tablet-frame">
+        <div class="layout">
+          <main class="main-panel">
+            <form id="reflection-form">
+              <section class="card top-meta">
+                <div class="meta-row">
+                  <div class="meta-item date-item">
+                    <label class="prompt" for="entryDate">日付</label>
+                    <input id="entryDate" name="entryDate" type="date" />
+                  </div>
+                </div>
+              </section>
+
+              <section class="card summary-card">
+                <h2>課題に対するまとめ</h2>
+                <textarea
+                  id="summary"
+                  name="summary"
+                  rows="5"
+                  maxlength="120"
+                  placeholder="今日は、○○の問題を解いて、○○ができるようになりました。"
+                ></textarea>
+              </section>
+
+              <section class="card">
+                <h2>学び方の振り返り</h2>
+
+                <div class="field-group">
+                  <p class="prompt">①今日は、どのように学びましたか？</p>
+                  <div class="checkbox-group" aria-label="学び方の選択">
+                    <label><input type="checkbox" name="studyWays" value="自分で" />自分で</label>
+                    <label><input type="checkbox" name="studyWays" value="仲間と" />仲間と</label>
+                    <label><input type="checkbox" name="studyWays" value="先生と" />先生と</label>
+                  </div>
+                </div>
+
+                <div class="field-group">
+                  <p class="prompt">②集中して学習に取り組むことができた</p>
+                  <div class="toggle-group" aria-label="集中して学習に取り組むことができた">
+                    <label><input type="radio" name="focus" value="〇" />〇</label>
+                    <label><input type="radio" name="focus" value="✕" />✕</label>
+                  </div>
+                </div>
+
+                <div class="field-group">
+                  <p class="prompt">③進み具合に合わせて、学び方を調整できた</p>
+                  <div class="toggle-group" aria-label="学び方を調整できた">
+                    <label><input type="radio" name="adjust" value="〇" />〇</label>
+                    <label><input type="radio" name="adjust" value="✕" />✕</label>
+                  </div>
+                </div>
+
+                <div class="field-group">
+                  <p class="prompt">④できないまま、わからないまま終わらなかった</p>
+                  <div class="toggle-group" aria-label="わからないまま終わらなかった">
+                    <label><input type="radio" name="notLeft" value="〇" />〇</label>
+                    <label><input type="radio" name="notLeft" value="✕" />✕</label>
+                  </div>
+                </div>
+
+                <div class="field-group">
+                  <p class="prompt">だから次はどのように学ぶ？</p>
+                  <div class="checkbox-group" aria-label="次の学び方の選択">
+                    <label><input type="checkbox" name="nextWays" value="自分で" />自分で</label>
+                    <label><input type="checkbox" name="nextWays" value="仲間と" />仲間と</label>
+                    <label><input type="checkbox" name="nextWays" value="先生と" />先生と</label>
+                  </div>
+                </div>
+              </section>
+
+              <div class="evaluation-bottom">
+                <div class="field-group evaluation-row">
+                  <label class="prompt" for="selfEvaluation">自己評価</label>
+                  <div class="evaluation-control">
+                    <select id="selfEvaluation" name="selfEvaluation">
+                      <option value="">選択してください</option>
+                      <option value="S">S</option>
+                      <option value="A">A</option>
+                      <option value="B">B</option>
+                      <option value="C">C</option>
+                    </select>
+                    <button type="submit" class="primary-btn save-button">記録を保存</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+
+          </main>
+
+          <aside class="side-panel">
+            <section class="card chart-card">
+              <h2>自己評価の変化</h2>
+              <canvas id="evaluationChart" width="420" height="240"></canvas>
+            </section>
+
+            <section class="card history-card">
+              <div class="history-header">
+                <h2>課題に対するまとめ（日付順）</h2>
+                <div class="history-filter">
+                  <button type="button" class="filter-btn active" data-filter="all">すべて</button>
+                  <button type="button" class="filter-btn" data-filter="S">S</button>
+                  <button type="button" class="filter-btn" data-filter="A">A</button>
+                  <button type="button" class="filter-btn" data-filter="B">B</button>
+                  <button type="button" class="filter-btn" data-filter="C">C</button>
+                </div>
+              </div>
+              <ul id="historyList" class="history-list"></ul>
+            </section>
+          </aside>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
